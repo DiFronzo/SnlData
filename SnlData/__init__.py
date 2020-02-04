@@ -38,7 +38,7 @@ class SnlSession:
         
     def search(self, zone="snl", query="", limit=3, offset=0, best=False):
         """
-        @param zone: Web site used for the search
+        @param zone: Website used for the search
         @type zone: str
         @param query: Påkrevd. Spørreord, f.eks. "Tog", "Edvard Munch"
         @type query: str
@@ -115,7 +115,7 @@ class SnlSession:
         @param updated_at_or_before: Filtrer søket til å bare inkludere artikler oppdatert på angitt tidspunkt, eller tidligere. Tidspunktet angis i RFC3339-format.
         @type updated_at_or_before: str (RFC3339 format)
         
-        @param zone: Web site used for the search
+        @param zone: Website used for the search
         @type zone: str
         @param best: To get the first and best (by query_match_quality) result returned.
         @type best: bool
