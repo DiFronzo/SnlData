@@ -1,4 +1,4 @@
-import requests, json
+import requests, json, re
 
 name = "SnlData"
 api_version = 'v1'
@@ -28,7 +28,7 @@ class SnlSession:
         self.headers = {"User-Agent": user_agent}
         self.S = requests.Session()
         
-    def search(self, zone="snl", query="", limit=3, offset=0):
+    def search(self, zone="snl", query="", limit=3, offset=0, best=False):
         if (limit > 0 and limit < 11 and zone != "" and offset < limit):
             path = self.PATHS[zone.lower()]
             PARAMS = {
@@ -36,7 +36,11 @@ class SnlSession:
                 "limit": limit,
                 "offset": offset,
             }
-            return self.get(PARAMS, path)
+            getVal = self.get(PARAMS, path)
+            if best:
+                return self.S.get(getVal[0]["article_url_json"]).json()
+            else:
+                return self.simple(getVal)
         else:
             raise Exception(
                 "Something went wrong with the parametres!"
@@ -49,3 +53,12 @@ class SnlSession:
                 "GET was unsuccessfull ({}): {}".format(R.status_code, R.text)
             )
         return R.json()
+    
+    def simple(self, obj):
+        i = 0
+        for result in obj:
+            sentence = re.search(r'^(.*?(?<!\b\w)[.?!])\s+[A-Z0-9]', result["first_two_sentences"], flags=0)
+            obj[i].update( {'simple' : '{}. {} (rank {}): {}'.format(i,result["headword"],round(result["rank"],1),sentence.group(1))} )
+            i += 1
+            
+        return obj
