@@ -20,6 +20,13 @@ class SnlSession:
     'nkl': 'https://nkl.snl.no/api/'+api_version+'/search',
     'prototyping': 'https://snl.no/.api/prototyping/search', #UNSTABLE
     }
+    
+    QUERYQUAL = {
+        0: 'Treff på artikkeltekst eller deler av tittel',
+        1: 'Søkestrengen er lik artikkelens tittel (headword), men artikkelen har en ytterligere presisering (clarification)',
+        2: 'Søkestrengen er lik artikkelens tittel (headword) og det er ingen ytterligere presisering (clarification)',
+    }
+    
     assertUser = None
     
     def __init__(
@@ -55,20 +62,16 @@ class SnlSession:
             
             if best:
                 return self.S.get(getVal[0]["article_url_json"]).json()
-            elif zone.lower() != "prototyping":
-                return self.simple(getVal).json()
             else:
-                return getVal.json()
+                return self.simple(getVal)
         else:
             raise Exception(
                 "Something went wrong with the parametres!"
             )
 
-    def searchV2(self, param: Dict[str, str]) -> Any:
+    def searchV2(self, param: Dict[str, str], zone="", best = False) -> Any:
         """
         Dict param: (with "prototyping")
-        @param zone: Web site used for the search
-        @type zone: str
         @param encyclopedia: Begrens søket til angitt leksikon: snl, sml, nbl eller nkl. Den samme filtreringen kan også oppnås ved gjøre søket i et subdomene.
         @type encyclopedia: str
         @param query: Søketekst, f.eks. "Tog", "Edvard Munch"
@@ -111,10 +114,21 @@ class SnlSession:
         @type updated_at_or_after: str (RFC3339 format)
         @param updated_at_or_before: Filtrer søket til å bare inkludere artikler oppdatert på angitt tidspunkt, eller tidligere. Tidspunktet angis i RFC3339-format.
         @type updated_at_or_before: str (RFC3339 format)
+        
+        @param zone: Web site used for the search
+        @type zone: str
+        @param best: To get the first and best (by query_match_quality) result returned.
+        @type best: bool
         """
-        if (param['limit'] > 0 and param['limit'] < 101 and param['offset'] < param['limit'] and param['query'] != ""):
-            print("This is an advance API...")
-                           
+         if (param['limit'] > 0 and param['limit'] < 101 and param['offset'] < param['limit'] and param['query'] != ""):
+            path = self.PATHS[zone.lower()]
+            
+            getVal = self.get(param, path)
+            if best:
+                return self.S.get(getVal[0]["article_url_json"]).json()
+            else:
+                return self.simple(getVal,zone.lower())
+                 
     def get(self, data, path):
         R = self.S.get(path, params=data, headers=self.headers)
         if R.status_code != 200:
@@ -123,11 +137,14 @@ class SnlSession:
             )
         return R.json()
     
-    def simple(self, obj):
+    def simple(self, obj, zone=""):
         i = 0
         for result in obj:
-            sentence = re.search(r'^(.*?(?<!\b\w)[.?!])\s+[A-Z0-9]', result["first_two_sentences"], flags=0)
-            obj[i].update( {'simple' : '{}. {} (rank {}): {}'.format(i,result["headword"],round(result["rank"],1),sentence.group(1))} )
+            if zone == 'prototyping':
+                obj[i].update( {'query_quality_explain' : self.QUERYQUAL[result['query_match_quality']]} )
+            else:
+                sentence = re.search(r'^(.*?(?<!\b\w)[.?!])\s+[A-Z0-9]', result["first_two_sentences"], flags=0)
+                obj[i].update( {'simple' : '{}. {} (rank {}): {}'.format(i,result["headword"],round(result["rank"],1),sentence.group(1))} )
             i += 1
             
         return obj
