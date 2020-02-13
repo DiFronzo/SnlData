@@ -8,12 +8,8 @@ Welcome to SnlData's documentation!
 
 .. toctree::
    :maxdepth: 2
+   :caption: Contents:
 
-   installation_and_usage
-   contributing
-   change_log
-   reference/reference_summary
-   authors
 
 
 Indices and tables
