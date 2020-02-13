@@ -1,3 +1,5 @@
+[![Documentation Status](https://readthedocs.org/projects/snldata/badge/?version=latest)](https://snldata.readthedocs.io/en/latest/?badge=latest)
+
 # SnlData
 
 ##### A light weight Python library for the Store norske leksikon API
