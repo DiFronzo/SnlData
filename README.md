@@ -88,7 +88,7 @@ import snldata
 
 R = snldata.SnlSession()
 R.searchV2({"encyclopedia": 'snl', 'query': 'dr. dre',"limit": 3, 'offset': 0 }, zone="prototyping", best=True)
-print(hei.title)
+print(R.title)
 
 ```
 Outputs: `Dr. Dre`
@@ -110,7 +110,7 @@ Outputs:
 1. hiphop: Treff på artikkeltekst eller deler av tittel
 2. Eminem: Treff på artikkeltekst eller deler av tittel
 ###Explaining of the values: (the prototyping api allows you to send a lot of parametres)
-<index of the json file> <title>: <rank>
+<index of the json file> <title>: <rank as text>
 ```
 Pick the article you want from the example above: (this will maybe change in the future)
 ```python
@@ -118,7 +118,6 @@ R._getSpecific(R.json[1]["article_url_json"])
 print("Title: {}, Created: {}".format(R.title,R.created_at))
 ```
 Outputs: `Title: hiphop, Created: Feb 14, 2009; 04:15:20`
-
 
 ## Reporting Issues
 
