@@ -1,4 +1,11 @@
-[![Documentation Status](https://readthedocs.org/projects/snldata/badge/?version=latest)](https://snldata.readthedocs.io/en/latest/?badge=latest)
+
+<p align="center">
+<a href="https://github.com/psf/snldata/actions"><img alt="Actions Status" src="https://github.com/psf/snldata/workflows/Test/badge.svg"></a>
+<a href="https://snldata.readthedocs.io/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/snldata/badge/?version=latest"></a>
+<a href="https://coveralls.io/github/psf/snldata?branch=master"><img alt="Coverage Status" src="https://coveralls.io/repos/github/psf/snldata/badge.svg?branch=master"></a>
+<a href="https://github.com/DiFronzo/SnlData/blob/master/LICENSE"><img alt="License: MIT" src="https://snldata.readthedocs.io/en/latest/_static/license.svg"></a>
+<a href="https://pypi.org/project/snldata/"><img alt="PyPI" src="https://img.shields.io/pypi/v/snldata"></a>
+</p>
 
 # SnlData
 
