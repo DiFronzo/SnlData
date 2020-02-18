@@ -54,6 +54,14 @@ Outputs: the JSON object
 	"images": []
 }
 ```
+## Overview of sites/zones
+|     code    |       Website       |   Note  |
+|:-----------:|:-------------------:|:-------:|
+|     snl     |   https://snl.no/   | Default |
+|     nbl     | https://nbl.snl.no/ |         |
+|     sml     | https://sml.snl.no/ |         |
+|     nkl     | https://nkl.snl.no/ |         |
+| prototyping |          -          | Unstable |
 ### Easy Query
 ```python
 import snldata
@@ -82,9 +90,9 @@ Outputs:
 ###Explaining of the values:
 <index of the json file> <title> (rank <rank id>): <first sentence>
 ```
-Pick the article you want from the example above: (this will maybe change in the future)
+Pick the article you want from the example above:
 ```python
-R._getSpecific(R.json[1]["article_url_json"])
+R._get(1)
 print(R.title)
 ```
 Outputs: `Spellemannprisen`
@@ -94,7 +102,7 @@ Outputs: `Spellemannprisen`
 import snldata
 
 R = snldata.SnlSession()
-R.searchV2({"encyclopedia": 'snl', 'query': 'dr. dre',"limit": 3, 'offset': 0 }, zone="prototyping", best=True)
+R.searchV2({"encyclopedia": "snl", "query": "dr. dre", "limit": 3, "offset": 0 }, zone="prototyping", best=True)
 print(R.title)
 
 ```
@@ -107,7 +115,7 @@ R = snldata.SnlSession()
 R.searchV2({"encyclopedia": "snl", "query": "dr. dre", "limit": 3, "offset": 0 }, zone="prototyping")
 i = 0
 for val in R.json:
-    print('{}. {}: {}'.format(i,val['headword'],val["query_quality_explain"]))
+    print('{}. {}: {}'.format(i, val['headword'], val["query_quality_explain"]))
     i += 1
 
 ```
@@ -119,12 +127,15 @@ Outputs:
 ###Explaining of the values: (the prototyping api allows you to send a lot of parametres)
 <index of the json file> <title>: <rank as text>
 ```
-Pick the article you want from the example above: (this will maybe change in the future)
+Pick the article you want from the example above:
 ```python
-R._getSpecific(R.json[1]["article_url_json"])
-print("Title: {}, Created: {}".format(R.title,R.created_at))
+R._get(1)
+print("Title: {}, Created: {}".format(R.title, R.created_at))
 ```
 Outputs: `Title: hiphop, Created: Feb 14, 2009; 04:15:20`
+
+## To-do
+- [ ] Fully support taxonomy
 
 ## Reporting Issues
 
