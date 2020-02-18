@@ -132,7 +132,7 @@ Pick the article you want from the example above:
 R._get(1)
 print("Title: {}, Created: {}".format(R.title, R.created_at))
 ```
-Outputs: `Title: hiphop, Created: Feb 14, 2009; 04:15:20`
+Outputs: `Title: hiphop, Created: 2009-02-14T05:15:20.546+01:00`
 
 ## To-do
 - [ ] Fully support taxonomy
