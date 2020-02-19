@@ -17,8 +17,6 @@ matrix:
   include:
     - name: "lint"
       python: 3.7
-      env:
-        - TEST_CMD="pre-commit run --all-files"
     - name: "3.6"
       python: 3.6
     - name: "3.7"
