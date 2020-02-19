@@ -20,8 +20,6 @@ USE_MYPYC = False
 if len(sys.argv) > 1 and sys.argv[1] == "--use-mypyc":
     sys.argv.pop(1)
     USE_MYPYC = True
-if os.getenv("SNLDATA_USE_MYPYC", None) == "1":
-    USE_MYPYC = True
 
 if USE_MYPYC:
     mypyc_targets = [
