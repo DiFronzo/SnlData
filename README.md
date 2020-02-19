@@ -7,15 +7,10 @@
   <a href="https://coveralls.io/github/psf/snldata?branch=master"><img alt="Coverage Status" src="https://coveralls.io/repos/github/psf/snldata/badge.svg?branch=master"></a>
   <a href="https://github.com/DiFronzo/SnlData/blob/master/LICENSE"><img alt="License: MIT" src="https://github.com/DiFronzo/SnlData/blob/master/docs/_static/license.svg"></a>
   <a href="https://pypi.org/project/snldata/"><img alt="PyPI" src="https://img.shields.io/pypi/v/snldata"></a>
+  <h4>A lightweight Python library for Store norske leksikon APIs</h4>
 </p>
 
-##### A light weight Python library for the Store norske leksikon API
-
-## Documentation
-
-UNDER CONSTRUCTION
-
-## Installation
+## Installation (Not ready)
 
     pip install snldata
 
