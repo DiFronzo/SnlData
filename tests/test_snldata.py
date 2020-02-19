@@ -1,18 +1,19 @@
-import unittest
+import pytest
+import sys
 from module import snldata
 
-class TestSnlData(unittest.TestCase):
-
-    def setUp(self):
-        self.service = snldata.SnlSession()
+    def test_setUp():
+        service = snldata.SnlSession()
         super().setUp()
 
-    def tearDown(self):
-        self.service.close()
+    def test_tearDown():
+        service.close()
         
-    def testQuery(self):
-        self.service.search(query="aa-", best=True)
-        self.assertEqual( self.service.title, "aa-")
-        
-if __name__ == '__main__':
-    unittest.main()
+    def test_testQuery():
+        service = snldata.SnlSession()
+        service.search(query="aa-", best=True)
+        assert self.service.title == "aa-"
+        service.close()
+    
+    def test_python():
+        assert sys.version_info >= (3, 6)
