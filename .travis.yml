@@ -8,8 +8,6 @@ env:
 install:
   - pip install coverage coveralls pre-commit
   - pip install -e '.[d]'
-script:
-  - $TEST_CMD
 after_success:
   - coveralls
 notifications:
