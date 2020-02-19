@@ -1,5 +1,4 @@
 from setuptools import setup
-from typing import Str
 import sys
 import os
 
