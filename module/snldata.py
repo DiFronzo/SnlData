@@ -160,7 +160,7 @@ class SnlSession:
         if not zone:
             self.store_var()
 
-    def simple(self, obj, zone=""):
+    def simple(self, zone=""):
         """
         Adds a entry to JSON file
         @param zone: Website used for the search (different for "prototyping")
