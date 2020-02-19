@@ -29,4 +29,4 @@ jobs:
 
       - name: Unit tests
         run: |
-          coverage run tests/test_snldata.py
+          pytest
