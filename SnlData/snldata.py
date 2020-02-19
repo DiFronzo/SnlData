@@ -36,7 +36,10 @@ class SnlSession:
         self.headers = {"User-Agent": user_agent}
         self.S = requests.Session()
         self.json = {}
-
+        
+    def __enter__(self):
+        return self
+    
     def search(self, zone="snl", query="", limit=3, offset=0, best=False):
     """
     @param zone: Website used for the search
@@ -183,3 +186,9 @@ class SnlSession:
                     setattr(self, key2, self.json[key][key2])
             else:
                 setattr(self, key, self.json[key])
+                
+    def close(self):
+        self.S.close()
+        
+    def __exit__(self, exc_type, exc_value, traceback):
+        self.close()
