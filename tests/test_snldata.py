@@ -1,7 +1,6 @@
 import unittest
 from SnlData import snldata
 
-
 class TestSnlData(unittest.TestCase):
 
     def setUp(self):
