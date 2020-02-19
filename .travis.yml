@@ -15,7 +15,7 @@ before_install:
 install:
   - pip install -r requirements.txt
 script: 
-  export PYTHONPATH=/home/travis/build/DiFronzo/SnlData
-  pytest # run tests
+  - export PYTHONPATH=/home/travis/build/DiFronzo/SnlData
+  - pytest # run tests
 after_success:
   - codecov # submit coverage
