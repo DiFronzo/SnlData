@@ -1,5 +1,5 @@
 import unittest
-from SnlData import snldata
+from module import snldata
 
 class TestSnlData(unittest.TestCase):
 
