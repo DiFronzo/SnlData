@@ -36,10 +36,10 @@ class SnlSession:
         self.headers = {"User-Agent": user_agent}
         self.S = requests.Session()
         self.json = {}
-        
+
     def __enter__(self):
         return self
-    
+
     def search(self, zone="snl", query="", limit=3, offset=0, best=False):
         """
         @param zone: Website used for the search
@@ -67,7 +67,7 @@ class SnlSession:
                 self._get(self.json[0]["article_url_json"])
                 self.store_var()
             else:
-                self.simple(self.json,zone)
+                self.simple(zone)
         else:
             raise Exception(
                 "Something went wrong with the parametres!"
@@ -131,7 +131,7 @@ class SnlSession:
                 self._get(self.json[0]["article_url_json"])
                 self.store_var()
             else:
-                self.simple(self.json,zone)
+                self.simple(zone)
         else:
             raise Exception(
                 "Something went wrong with the parametres!"
@@ -172,7 +172,10 @@ class SnlSession:
                 self.json[i].update( {'query_quality_explain' : self.QUERYQUAL[result['query_match_quality']]} )
             else:
                 sentence = re.search(r'^(.*?(?<!\b\w)[.?!])\s+[A-Z0-9]', result["first_two_sentences"], flags=0)
-                self.json[i].update( {'simple' : '{}. {} (rank {}): {}'.format(i,result["headword"],round(result["rank"],1),sentence.group(1))} )
+                if isinstance(sentence, type(None)):
+                    self.json[i].update( {'simple' : '{}. {} (rank {}): {}'.format(i,result["headword"],round(result["rank"],1),result["first_two_sentences"])} )
+                else:
+                    self.json[i].update( {'simple' : '{}. {} (rank {}): {}'.format(i,result["headword"],round(result["rank"],1),sentence.group(1))} )
             i += 1
 
     def store_var(self):
@@ -185,9 +188,9 @@ class SnlSession:
                     setattr(self, key2, self.json[key][key2])
             else:
                 setattr(self, key, self.json[key])
-                
+
     def close(self):
         self.S.close()
-        
+
     def __exit__(self, exc_type, exc_value, traceback):
         self.close()
