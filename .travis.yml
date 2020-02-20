@@ -17,6 +17,6 @@ install:
 script: 
   - export PYTHONPATH=/home/travis/build/DiFronzo/SnlData
   - pytest
-  - coverage run tests.test_snldata.py
+  - coverage run tests/test_snldata.py
 after_success:
   - codecov # submit coverage
