@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="500" height="300" src="https://snldata.readthedocs.io/en/latest/_static/snldata_logo.svg">
+  <a href="https://github.com/DiFronzo/snldata"><img alt="Logo" width="500" height="300" src="https://snldata.readthedocs.io/en/latest/_static/snldata_logo.svg"></a>
 </p>
 <p align="center">
   <a href="https://github.com/DiFronzo/snldata/actions"><img alt="Actions Status" src="https://github.com/DiFronzo/SnlData/workflows/Test/badge.svg"></a>
