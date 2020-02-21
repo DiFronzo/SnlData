@@ -21,31 +21,28 @@ Raw JSON
 import snldata
 
 R = snldata.SnlSession()
-R.search(query="aa-", best=True) #Pick the one with the best rank
+R.search(query="fortolket programmeringsspråk", best=True) #Pick the one with the best rank
 print(R.json)
 
 ```
 Outputs: the JSON object
 ```
 {
-	"title": "aa-",
-	"url": "http://snl.no/aa-",
-	"subject_url": "http://snl.no/.taxonomy/3959",
-	"subject_title": "Prefikser og suffikser",
-	"xhtml_body": "\u003cdiv\u003e\u003cp\u003efor ord som uttales \u003cem\u003ea-\u003c/em\u003e, se også ord på a-.\u003c/p\u003e\u003c/div\u003e\n",
-	"created_at": "2009-02-14T00:11:33.711+01:00",
-	"changed_at": "2015-11-19T21:18:52.285+01:00",
-	"license_name": "begrenset",
+	"title": "fortolket programmeringsspråk",
+	"url": "http://snl.no/fortolket_programmeringsspr%C3%A5k",
+	"subject_url": "http://snl.no/.taxonomy/3689",
+	"subject_title": "Programmering",
+	"xhtml_body": "\u003cdiv\u003e\r\n\u003cp\u003eprogrammeringsspråk som ikke blir kompilert til objekt- eller maskinkode, men fortolket av et eget program på vertsmaskinen.\u003c/p\u003e\r\n\u003cp\u003eFordelen med slike språk er at man kan lage programmer som kan gjøre på mange forskjellige \u003ca class=\"crossref\" href=\"https://snl.no/datamaskin\"\u003edatamaskiner\u003c/a\u003e og \u003ca class=\"crossref\" href=\"https://snl.no/operativsystem\"\u003eoperativsystemer\u003c/a\u003e uten å skreddersy dem for hver enkelt plattform.\u003c/p\u003e\r\n\u003cp\u003eEksempler på fortolkede språk:\u003c/p\u003e\r\n\u003cul\u003e\r\n\u003cli\u003e\u003ca class=\"crossref\" href=\"https://snl.no/Python_-_programmeringsspr%C3%A5k\"\u003ePython\u003c/a\u003e\u003c/li\u003e\r\n\u003cli\u003eJavascript\u003c/li\u003e\r\n\u003cli\u003e\u003ca class=\"crossref\" href=\"https://snl.no/Perl_-_IT\"\u003ePHP\u003c/a\u003e\u003c/li\u003e\r\n\u003cli\u003e\u003ca class=\"crossref\" href=\"https://snl.no/Perl_-_IT\"\u003ePerl\u003c/a\u003e\u003c/li\u003e\r\n\u003c/ul\u003e\r\n\u003c/div\u003e",
+	"created_at": "2017-12-12T10:34:18.189+01:00",
+	"changed_at": "2017-12-12T10:38:37.626+01:00",
+	"license_name": "fri",
 	"metadata_license_name": "fri",
 	"metadata": {
-		"author": "1660",
-		"subject": "253",
-		"headword": "aa-",
-		"article_type": "general",
-		"is_authorized": "1"
+		"lastname": "",
+		"firstname": ""
 	},
 	"authors": [{
-		"full_name": "Store norske leksikon (2005 - 2007)"
+		"full_name": "Henrik Dvergsdal"
 	}],
 	"images": []
 }
@@ -59,6 +56,8 @@ Outputs: the JSON object
 |     nkl     | https://nkl.snl.no/ |         |
 | prototyping |          -          | Unstable |
 ### Easy Query
+- Main documentation: [API-dokumentasjon](https://meta.snl.no/API-dokumentasjon)
+
 ```python
 import snldata
 
@@ -94,6 +93,8 @@ print(R.title)
 Outputs: `Spellemannprisen`
 
 ### Advance Query (best for prototyping api)
+- Main documentation: [API-dokumentasjon - prototyping](https://meta.snl.no/API-dokumentasjon_-_prototyping)
+
 ```python
 import snldata
 
@@ -117,9 +118,9 @@ for val in R.json:
 ```
 Outputs:
 ```
-0. Dr. Dre: Søkestrengen er lik artikkelens tittel (headword) og det er ingen ytterligere presisering (clarification)
-1. hiphop: Treff på artikkeltekst eller deler av tittel
-2. Eminem: Treff på artikkeltekst eller deler av tittel
+0. Dr. Dre: The search string is equal to the article's headword and there is no further clarification
+1. hiphop: Match on article text or part of title
+2. Eminem: Match on article text or part of title
 ###Explaining of the values: (the prototyping api allows you to send a lot of parametres)
 <index of the json file> <title>: <rank as text>
 ```
@@ -130,6 +131,7 @@ print("Title: {}, Created: {}".format(R.title, R.created_at))
 ```
 Outputs: `Title: hiphop, Created: 2009-02-14T05:15:20.546+01:00`
 
+<sup>All of the examples uses text that is [CC-BY-SA-3.0](https://creativecommons.org/licenses/by-sa/3.0). By the following authors: Henrik Dvergsdal, Jon Vidar Bergan, and Audun Kjus Aahlin. Read more about the license: [fri gjenbruk](https://meta.snl.no/fri_gjenbruk).</sup>
 ## To-do
 - [ ] Fully support taxonomy
 
