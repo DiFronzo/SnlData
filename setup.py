@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from setuptools import setup
 import sys
 import os
@@ -35,11 +36,7 @@ else:
 
 setup(
     name="snldata",
-    use_scm_version={
-        "write_to": "_snldata_version.py",
-        "write_to_template": 'version = "{version}"\n',
-    },
-    version="0.0.1",
+    version="0.0.2",
     description="A lightweight Python library for Store norske leksikon APIs.",
     long_description=get_long_description(),
     long_description_content_type="text/markdown",
@@ -48,6 +45,7 @@ setup(
     author_email="root@vfiles.no",
     url="https://github.com/DiFronzo/SnlData/",
     license="MIT",
+    packages="snldata",
     py_modules=["module", "module.snldata"],
     ext_modules=ext_modules,
     python_requires=">=3.6",
@@ -60,6 +58,7 @@ setup(
         "Development Status :: 4 - Beta",
         "Environment :: Console",
         "Intended Audience :: Developers",
+        'Natural Language :: Norwegian',
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
         "Programming Language :: Python",

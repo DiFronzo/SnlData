@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import requests
-import json
 import re
 from typing import Any, Dict
 
@@ -13,7 +12,13 @@ script_version = '0.0.2'
 
 class SnlSession:
     """
-    Work with SNL
+        Example usage:
+
+            import snldata
+
+            R = snldata.SnlSession()
+            R.search(query="aa-", best=True) #Pick the one with the best rank
+            print(R.json)
     """
 
     PATHS = {
@@ -25,22 +30,44 @@ class SnlSession:
     }
 
     QUERYQUAL = {
-        0: 'Treff på artikkeltekst eller deler av tittel',
-        1: 'Søkestrengen er lik artikkelens tittel (headword), men artikkelen \
-        har en ytterligere presisering (clarification)',
-        2: 'Søkestrengen er lik artikkelens tittel (headword) og det er ingen \
-        ytterligere presisering (clarification)',
+        0: "Match on article text or part of title",
+        1: "The search string is equal to the headword, but the article \
+has a further clarification",
+        2: "The search string is equal to the article's headword and there \
+is no further clarification",
     }
 
     assertUser = None
 
     def __init__(
         self,
+        requests_timeout=None,
+        requests_session=True,
         user_agent=user_agent,
     ):
+        """
+        Creates a Store Norske Leksikon API client.
+        :param requests_timeout:
+            Tell Requests to stop waiting for a response after a given
+            number of seconds
+        :param requests_session:
+            A Requests session object or a truthy value to create one.
+            A falsy value disables sessions.
+            It should generally be a good idea to keep sessions enabled
+            for performance reasons.
+        :param user_agent
+            Tell Requests what program is used in the action
+        """
         self.headers = {"User-Agent": user_agent}
-        self.S = requests.Session()
-        self.json = {}
+        self.requests_timeout = requests_timeout
+
+        if isinstance(requests_session, requests.Session):
+            self._S = requests_session
+        else:
+            if requests_session:  # Build a new session.
+                self._S = requests.Session()
+            else:  # Use the Requests API module as a "session".
+                raise NotImplementedError()
 
     def __enter__(self):
         return self
@@ -49,19 +76,20 @@ class SnlSession:
         """
         @param zone: Website used for the search
         @type zone: str
-        @param query: Påkrevd. Spørreord, f.eks. "Tog", "Edvard Munch"
+        @param query: Required. Queries, e.g. "Tog", "Edvard Munch".
+            Language: Norwegian
         @type query: str
-        @param limit: Ikke påkrevd. Maks. antall resultater, 1-10 er gyldige
-            verdier, standard er 3
+        @param limit: Not required. Max. number of results, 1-10 are valid
+             values, default is 3
         @type limit: int
-        @param offset: Ikke påkrevd. Brukes til å vise neste "side" med
-            resultater, default er 0, inkrementer med verdien du satte i limit
+        @param offset: Not required. Used to display the next "page" with
+             results, default is 0, increments with the value you set in limit
         @type offset: int
         @param best: To get the first and best (by rank) result returned.
         @type best: bool
         """
-        if (limit > 0 and limit < 11 and zone != "" and offset < limit and
-                query != ""):
+        if (limit > 0 and limit < 11 and zone in self.PATHS and
+                offset < limit and query != ""):
 
             PARAMS = {
                 "query": query,
@@ -155,7 +183,8 @@ class SnlSession:
         @type best: bool
         """
         if (param['limit'] > 0 and param['limit'] < 101 and param['offset'] <
-                param['limit'] and param['query'] != ""):
+                param['limit'] and param['query'] != "" and
+                zone in self.PATHS):
 
             self._get(param, zone)
 
@@ -177,13 +206,13 @@ class SnlSession:
         @type zone: str
         """
         if isinstance(data, int) and isinstance(self.json, list):
-            R = self.S.get(
+            R = self._S.get(
                 self.json[data]["article_url_json"], headers=self.headers)
         elif not isinstance(data, int):
-            R = self.S.get(
+            R = self._S.get(
                 self.PATHS[zone.lower()], params=data, headers=self.headers)
         else:
-            return ""
+            raise NotImplementedError
 
         if R.status_code != 200:
             raise Exception(
@@ -236,7 +265,7 @@ class SnlSession:
                 setattr(self, key, self.json[key])
 
     def close(self):
-        self.S.close()
+        self._S.close()
 
     def __exit__(self, exc_type, exc_value, traceback):
         self.close()
