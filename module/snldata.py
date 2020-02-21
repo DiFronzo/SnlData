@@ -64,8 +64,7 @@ class SnlSession:
             self._get(PARAMS, zone)
 
             if best:
-                self._get(self.json[0]["article_url_json"])
-                self.store_var()
+                self._get(0)
             else:
                 self.simple(zone)
         else:
@@ -128,8 +127,7 @@ class SnlSession:
             self._get(param, zone)
 
             if best:
-                self._get(self.json[0]["article_url_json"])
-                self.store_var()
+                self._get(0)
             else:
                 self.simple(zone)
         else:
