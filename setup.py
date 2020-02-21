@@ -24,7 +24,7 @@ if len(sys.argv) > 1 and sys.argv[1] == "--use-mypyc":
 
 if USE_MYPYC:
     mypyc_targets = [
-        "snldata.py",
+        "client.py",
     ]
 
     from mypyc.build import mypycify
