@@ -46,7 +46,7 @@ setup(
     url="https://github.com/DiFronzo/SnlData/",
     license="MIT",
     packages="snldata",
-    py_modules=["module", "module.snldata"],
+    py_modules=["snldata", "snldata.client"],
     ext_modules=ext_modules,
     python_requires=">=3.6",
     zip_safe=False,
