@@ -131,7 +131,7 @@ print("Title: {}, Created: {}".format(R.title, R.created_at))
 ```
 Outputs: `Title: hiphop, Created: 2009-02-14T05:15:20.546+01:00`
 
-<sup>All of the examples uses text that is [CC-BY-SA-3.0](https://creativecommons.org/licenses/by-sa/3.0). By the following authors: Henrik Dvergsdal, Jon Vidar Bergan, and Audun Kjus Aahlin. Read more about the license: [fri gjenbruk](https://meta.snl.no/fri_gjenbruk).</sup>
+<sup>All of the examples uses text that is [CC-BY-SA-3.0](https://creativecommons.org/licenses/by-sa/3.0). By one of the following authors: Henrik Dvergsdal, Jon Vidar Bergan, and Audun Kjus Aahlin. Read more about the license: [fri gjenbruk](https://meta.snl.no/fri_gjenbruk).</sup>
 ## To-do
 - [ ] Fully support taxonomy
 
