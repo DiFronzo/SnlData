@@ -145,17 +145,18 @@ class SnlSession:
         @param zone: Website used for the search
         @type zone: str
         """
-        if isinstance(data,int):
+        if isinstance(data, int) and isinstance(self.json, list):
             R = self.S.get(self.json[data]["article_url_json"], headers=self.headers)
-        elif not zone:
-            R = self.S.get(data, headers=self.headers)
-        else:
+        elif not isinstance(data, int):  
             R = self.S.get(self.PATHS[zone.lower()], params=data, headers=self.headers)
-
+        else:
+            return ""
+            
         if R.status_code != 200:
             raise Exception(
                 "GET was unsuccessfull ({}): {}".format(R.status_code, R.text)
             )
+            
         self.json = R.json()
         if not zone:
             self.store_var()
