@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from setuptools import setup
+import setuptools
 import sys
 import os
 
@@ -24,7 +24,7 @@ if len(sys.argv) > 1 and sys.argv[1] == "--use-mypyc":
 
 if USE_MYPYC:
     mypyc_targets = [
-        "client.py",
+        "snldata/client.py",
     ]
 
     from mypyc.build import mypycify
@@ -34,8 +34,8 @@ if USE_MYPYC:
 else:
     ext_modules = []
 
-setup(
-    name="snldata",
+setuptools.setup(
+    name="SnlData",
     version="0.0.2",
     description="A lightweight Python library for Store norske leksikon APIs.",
     long_description=get_long_description(),
@@ -45,8 +45,8 @@ setup(
     author_email="root@vfiles.no",
     url="https://github.com/DiFronzo/SnlData/",
     license="MIT",
-    packages="snldata",
-    py_modules=["snldata", "snldata.client"],
+    packages=["snldata"],
+    py_modules=["snldata"],
     ext_modules=ext_modules,
     python_requires=">=3.6",
     zip_safe=False,
