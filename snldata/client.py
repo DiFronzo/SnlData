@@ -7,7 +7,7 @@ name = "SnlData"
 api_version = 'v1'
 user_agent = "%s %s" % (name, api_version)
 
-script_version = '0.0.2'
+script_version = '0.0.3'
 
 
 class SnlSession:
@@ -219,7 +219,11 @@ is no further clarification",
                 "GET was unsuccessfull ({}): {}".format(R.status_code, R.text)
             )
 
+        if hasattr(self, 'title'):
+            self.delete_var()
+
         self.json = R.json()
+
         if not zone:
             self.store_var()
 
@@ -263,6 +267,17 @@ is no further clarification",
                     setattr(self, key2, self.json[key][key2])
             else:
                 setattr(self, key, self.json[key])
+
+    def delete_var(self):
+        """
+        Remove local storage attributes
+        """
+        for key in self.json:
+            if isinstance(self.json[key], dict):
+                for key2 in self.json[key]:
+                    delattr(self, key2)
+            else:
+                delattr(self, key)
 
     def close(self):
         self._S.close()

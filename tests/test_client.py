@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import unittest
 # import pytest
 import requests
@@ -58,6 +59,11 @@ class TestSnlData(unittest.TestCase):
         self.assertTrue(
             "Something went wrong with the parametres!" in
             str(context.exception))
+
+    def test_garbagecontrol(self):
+        self.service.search(query="Dr. Dre", best=True)
+        self.service.search(query="Ole Ivars", best=True)
+        self.assertRaises(AttributeError, lambda: self.service.gender)
 
 if __name__ == '__main__':
     unittest.main()
