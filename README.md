@@ -48,14 +48,22 @@ Outputs: the JSON object
 	"images": []
 }
 ```
+## Licenses for content from Store norske leksikon
+| Licence | Description | Read more
+| --- | --- | --- |
+| `fri` | [Creative Commons](https://creativecommons.org/) **[CC-BY-SA-3.0](https://creativecommons.org/licenses/by-sa/3.0/)** license. Everyone is allowed to **share, use, copy and adapt** the text as long as **the author and Store norske leksikon** continues to be credited and the article retains the same free license for further use. | [Meta](https://meta.snl.no/fri_gjenbruk)
+| `begrenset gjenbruk` | You **can't reuse, republish, or adapt** the article without first obtaining the author's permission.| [Meta](https://meta.snl.no/begrenset_gjenbruk)
+
 ## Overview of sites/zones
-|     code    |       Website       |   Note  |
-|:-----------:|:-------------------:|:-------:|
-|     snl     |   https://snl.no/   | Default |
-|     nbl     | https://nbl.snl.no/ |         |
-|     sml     | https://sml.snl.no/ |         |
-|     nkl     | https://nkl.snl.no/ |         |
-| prototyping |          -          | Unstable |
+|     code    |       Website       |   Note 
+| --- | --- | --- |
+|     `snl`     |   https://snl.no/   | Default
+|     `nbl`     | https://nbl.snl.no/ |        
+|     `sml`     | https://sml.snl.no/ |        
+|     `nkl`     | https://nkl.snl.no/ |        
+| `prototyping` |          -          | Unstable
+
+## Query
 ### Easy Query
 - Main documentation: [API-dokumentasjon](https://meta.snl.no/API-dokumentasjon)
 
@@ -132,7 +140,8 @@ print("Title: {}, Created: {}".format(R.title, R.created_at))
 ```
 Outputs: `Title: hiphop, Created: 2009-02-14T05:15:20.546+01:00`
 
-<sup>All of the examples uses text that is [CC-BY-SA-3.0](https://creativecommons.org/licenses/by-sa/3.0). By one of the following authors: Henrik Dvergsdal, Jon Vidar Bergan, and Audun Kjus Aahlin. Read more about the license: [fri gjenbruk](https://meta.snl.no/fri_gjenbruk).</sup>
+<sup>All of the examples uses text that is [CC-BY-SA-3.0](https://creativecommons.org/licenses/by-sa/3.0). By at least one of the following authors: Henrik Dvergsdal, Jon Vidar Bergan, and Audun Kjus Aahlin. Read more about the license: [fri gjenbruk](https://meta.snl.no/fri_gjenbruk).</sup>
+
 ## To-do
 - [ ] Fully support taxonomy
 
