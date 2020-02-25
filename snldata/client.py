@@ -72,6 +72,9 @@ is no further clarification",
     def __enter__(self):
         return self
 
+    def __dir__(self):
+         return self.__dict__.keys()
+
     def search(self, zone="snl", query="", limit=3, offset=0, best=False):
         """
         @param zone: Website used for the search
