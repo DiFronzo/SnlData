@@ -13,9 +13,6 @@
   <h4>A lightweight Python library for Store norske leksikon APIs</h4>
 </p>
 
-
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FDiFronzo%2FSnlData.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FDiFronzo%2FSnlData?ref=badge_large)
-
 ## Installation
 
     pip install snldata
