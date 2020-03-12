@@ -7,7 +7,7 @@ name = "SnlData"
 api_version = 'v1'
 user_agent = "%s %s" % (name, api_version)
 
-script_version = '0.0.4'
+script_version = '0.0.5'
 
 
 class SnlSession:
