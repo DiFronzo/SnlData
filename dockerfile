@@ -7,10 +7,10 @@ ENV LC_ALL C.UTF-8
 
 RUN apt-get update
 
-COPY /snldata /src
+COPY . /src
 
 WORKDIR /src
 
-RUN pip3 install -r /src/requirements.txt
+RUN pip3 install -r requirements.txt
 
 CMD python3 setup.py
