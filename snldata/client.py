@@ -22,12 +22,21 @@ class SnlSession:
     """
 
     PATHS = {
-        'snl': 'https://snl.no/api/' + api_version + '/search',
-        'dsd': 'https://denstoredanske.lex.dk/api/' + api_version + '/search',
-        'nbl': 'https://nbl.snl.no/api/' + api_version + '/search',
-        'sml': 'https://sml.snl.no/api/' + api_version + '/search',
-        'nkl': 'https://nkl.snl.no/api/' + api_version + '/search',
-        'prototyping': 'https://snl.no/.api/prototyping/search',  # UNSTABLE
+        'snl': 'https://snl.no/api/' + api_version + '/search', # Store norske leksikon
+        'nbl': 'https://nbl.snl.no/api/' + api_version + '/search', # Norsk biografisk leksikon
+        'sml': 'https://sml.snl.no/api/' + api_version + '/search', # Store medisinske leksikon
+        'nkl': 'https://nkl.snl.no/api/' + api_version + '/search', # Norsk kunstnerleksikon
+        'prototyping': 'https://snl.no/.api/prototyping/search',  # UNSTABLE - SNL
+        'dsd': 'https://denstoredanske.lex.dk/api/' + api_version + '/search', # Den store danske
+        'dlh': 'https://dansklitteraturshistorie.lex.dk/api/' + api_version + '/search', # Dansk litteratur historie
+        'dbl': 'https://biografiskleksikon.lex.dk/api/' + api_version + '/search', # Dansk biografisk leksikon
+        'gtl': 'https://teaterleksikon.lex.dk/api' + api_version + '/search', # Gyldendals Teaterleksikon
+        'nm': 'https://mytologi.lex.dk/api/' + api_version + '/search', # Nordisk Mytologi
+        'do': 'https://danmarksoldtid.lex.dk/api/' + api_version + '/search', # Danmarks Oldtid
+        'sl': 'https://symbolleksikon.lex.dk/api/' + api_version + '/search', # Symbolleksikon
+        'dh': 'https://danmarkshistorien.lex.dk/api/' + api_version + '/search', # Danmarkshistorien
+        'hob': 'https://bornelitteratur.lex.dk/api/' + api_version + '/search', # Historien om børnelitteratur
+        'dp': 'https://pattedyratlas.lex.dk/api/' + api_version + '/search', # Dansk Pattedyratlas
         'prototyping-dsd': 'https://denstoredanske.lex.dk/.api/prototyping/search',  # UNSTABLE
     }
 
