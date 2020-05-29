@@ -36,7 +36,7 @@ class SnlSession:
         'sl': 'https://symbolleksikon.lex.dk/api/' + api_version + '/search', # Symbolleksikon
         'dh': 'https://danmarkshistorien.lex.dk/api/' + api_version + '/search', # Danmarkshistorien
         'hob': 'https://bornelitteratur.lex.dk/api/' + api_version + '/search', # Historien om børnelitteratur
-        'dp': 'https://pattedyratlas.lex.dk/api/' + api_version + '/search', # Dansk Pattedyratlas
+        'pd': 'https://pattedyratlas.lex.dk/api/' + api_version + '/search', # Dansk Pattedyratlas
         'prototyping-dsd': 'https://denstoredanske.lex.dk/.api/prototyping/search',  # UNSTABLE
     }
 
