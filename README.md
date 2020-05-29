@@ -53,18 +53,32 @@ Outputs: the JSON object
 | Licence | Description | Read more
 | --- | --- | --- |
 | `fri` | [Creative Commons](https://creativecommons.org/) **[CC-BY-SA-3.0](https://creativecommons.org/licenses/by-sa/3.0/)** license. Everyone is allowed to **share, use, copy and adapt** the text as long as **the author and Store norske leksikon** continues to be credited and the article retains the same free license for further use. | [Meta](https://meta.snl.no/fri_gjenbruk)
-| `begrenset gjenbruk` | You **can't reuse, republish, or adapt** the article without first obtaining the author's permission.| [Meta](https://meta.snl.no/begrenset_gjenbruk)
+| `begrenset gjenbruk/begrænset genbrug` | You **can't reuse, republish, or adapt** the article without first obtaining the author's permission.| [Meta](https://meta.snl.no/begrenset_gjenbruk)
 
 ## Overview of sites/zones
+### Store norske
 |     code    |       Website       |   Note 
 | --- | --- | --- |
 |     `snl`     |   https://snl.no/   | Default
-|     `dsd`     |   https://denstoredanske.lex.dk/   |
 |     `nbl`     | https://nbl.snl.no/ |        
 |     `sml`     | https://sml.snl.no/ |        
 |     `nkl`     | https://nkl.snl.no/ |        
 | `prototyping` |          -          | Unstable - for SNL
-| `prototyping-dsd` |          -      | Unstable - for DSD
+
+### Den danske
+|     code    |       Website       |   Note 
+| --- | --- | --- |
+|     `dsd`     |   https://denstoredanske.lex.dk/   | 
+|     `dlh`     | https://dansklitteraturshistorie.lex.dk/ |        
+|     `dbl`     | https://biografiskleksikon.lex.dk/ |        
+|     `gtl`     | https://teaterleksikon.lex.dk/ |
+|     `nm`     | https://mytologi.lex.dk/ |
+|     `do`     | https://danmarksoldtid.lex.dk/ |
+|     `sl`     | https://symbolleksikon.lex.dk/ |
+|     `dh`     | https://danmarkshistorien.lex.dk/ |
+|     `hob`     | https://bornelitteratur.lex.dk/ |
+|     `pd`     | https://pattedyratlas.lex.dk/ |
+| `prototyping` |          -          | Unstable - for DSD
 
 ## Query
 ### Easy Query
