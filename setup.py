@@ -36,7 +36,7 @@ else:
 
 setuptools.setup(
     name="SnlData",
-    version="0.0.5",
+    version="1.0.0",
     description="A lightweight Python library for Store norske leksikon APIs.",
     long_description=get_long_description(),
     long_description_content_type="text/markdown",
