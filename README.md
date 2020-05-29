@@ -122,7 +122,7 @@ Outputs: `Spellemannprisen`
 import snldata
 
 R = snldata.SnlSession()
-R.search(zone='dsd', query="Python", best=True) #Pick the three best results
+R.search(zone='dsd', query="Python", best=True)  #Pick the one with the best rank
 print(R.url)
 ```
 Outputs: `https://denstoredanske.lex.dk/Python`
