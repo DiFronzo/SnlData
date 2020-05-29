@@ -10,7 +10,7 @@
   <a href="https://github.com/DiFronzo/SnlData/blob/master/LICENSE"><img alt="License: MIT" src="https://snldata.readthedocs.io/en/latest/_static/license.svg"></a>
   <a href="https://pepy.tech/project/snldata"><img alt="Downloads" src="https://pepy.tech/badge/snldata"></a>
   <a href="https://pypi.org/project/snldata/"><img alt="PyPI" src="https://img.shields.io/pypi/v/snldata"></a>
-  <h4>A lightweight Python library for Store norske leksikon APIs</h4>
+  <h4>A lightweight Python library for Store norske leksikon and Den store danske APIs</h4>
 </p>
 
 ## Installation
@@ -59,10 +59,12 @@ Outputs: the JSON object
 |     code    |       Website       |   Note 
 | --- | --- | --- |
 |     `snl`     |   https://snl.no/   | Default
+|     `dsd`     |   https://denstoredanske.lex.dk/   |
 |     `nbl`     | https://nbl.snl.no/ |        
 |     `sml`     | https://sml.snl.no/ |        
 |     `nkl`     | https://nkl.snl.no/ |        
-| `prototyping` |          -          | Unstable
+| `prototyping` |          -          | Unstable - for SNL
+| `prototyping-dsd` |          -      | Unstable - for DSD
 
 ## Query
 ### Easy Query
@@ -101,6 +103,15 @@ R._get(1)
 print(R.title)
 ```
 Outputs: `Spellemannprisen`
+
+```python
+import snldata
+
+R = snldata.SnlSession()
+R.search(zone='dsd', query="Python", best=True) #Pick the three best results
+print(R.url)
+```
+Outputs: `https://denstoredanske.lex.dk/Python`
 
 ### Advance Query (best for prototyping api)
 - Main documentation: [API-dokumentasjon - prototyping](https://meta.snl.no/API-dokumentasjon_-_prototyping)
