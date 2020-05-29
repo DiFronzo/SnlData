@@ -23,10 +23,12 @@ class SnlSession:
 
     PATHS = {
         'snl': 'https://snl.no/api/' + api_version + '/search',
+        'dsd': 'https://denstoredanske.lex.dk/api/' + api_version + '/search',
         'nbl': 'https://nbl.snl.no/api/' + api_version + '/search',
         'sml': 'https://sml.snl.no/api/' + api_version + '/search',
         'nkl': 'https://nkl.snl.no/api/' + api_version + '/search',
         'prototyping': 'https://snl.no/.api/prototyping/search',  # UNSTABLE
+        'prototyping-dsd': 'https://denstoredanske.lex.dk/.api/prototyping/search',  # UNSTABLE
     }
 
     QUERYQUAL = {
