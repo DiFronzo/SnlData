@@ -170,6 +170,7 @@ Outputs: `Title: hiphop, Created: 2009-02-14T05:15:20.546+01:00`
 
 ## To-do
 - [ ] Fully support taxonomy
+- [ ] When zero results, return somthing to tell the user there is no result.
 
 ## Reporting Issues
 
