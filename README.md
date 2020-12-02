@@ -49,14 +49,14 @@ Outputs: the JSON object
 	"images": []
 }
 ```
-## Licenses for content from Store norske leksikon
+## Licenses for content from Store Norske Leksikon and Lex.dk 
 | Licence | Description | Read more
 | --- | --- | --- |
 | `fri` | [Creative Commons](https://creativecommons.org/) **[CC-BY-SA-3.0](https://creativecommons.org/licenses/by-sa/3.0/)** license. Everyone is allowed to **share, use, copy and adapt** the text as long as **the author and Store norske leksikon** continues to be credited and the article retains the same free license for further use. | [Meta](https://meta.snl.no/fri_gjenbruk)
 | `begrenset gjenbruk/begrænset genbrug` | You **can't reuse, republish, or adapt** the article without first obtaining the author's permission.| [Meta](https://meta.snl.no/begrenset_gjenbruk)
 
 ## Overview of sites/zones
-### Store norske
+### SNL
 |     code    |       Website       |   Note 
 | --- | --- | --- |
 |     `snl`     |   https://snl.no/   | Default
@@ -65,7 +65,7 @@ Outputs: the JSON object
 |     `nkl`     | https://nkl.snl.no/ |        
 | `prototyping` |          -          | Unstable - for SNL
 
-### Den danske
+### LEX
 |     code    |       Website       |   Note 
 | --- | --- | --- |
 |     `dsd`     |   https://denstoredanske.lex.dk/   | 
@@ -78,7 +78,7 @@ Outputs: the JSON object
 |     `dh`     | https://danmarkshistorien.lex.dk/ |
 |     `hob`     | https://bornelitteratur.lex.dk/ |
 |     `pd`     | https://pattedyratlas.lex.dk/ |
-| `prototyping` |          -          | Unstable - for DSD
+| `prototyping-lex` |          -          | Unstable - for LEX pages
 
 ## Query
 ### Easy Query
@@ -165,12 +165,22 @@ R._get(1)
 print("Title: {}, Created: {}".format(R.title, R.created_at))
 ```
 Outputs: `Title: hiphop, Created: 2009-02-14T05:15:20.546+01:00`
+### No result
+If the API returns no results, `.json` will be given a empty list.
+```python
+import snldata
+
+R = snldata.SnlSession()
+R.search(zone='dsd', query="asdadasdasdad", best=True)  #Pick the one with the best rank
+print(R.json)
+```
+Outputs: `[]`
 
 <sup>All of the examples uses text that is [CC-BY-SA-3.0](https://creativecommons.org/licenses/by-sa/3.0). By at least one of the following authors: Henrik Dvergsdal, Jon Vidar Bergan, and Audun Kjus Aahlin. Read more about the license: [fri gjenbruk](https://meta.snl.no/fri_gjenbruk).</sup>
 
 ## To-do
 - [ ] Fully support taxonomy
-- [ ] When zero results, return somthing to tell the user there is no result.
+- [X] When zero results, return somthing to tell the user there is no result.
 
 ## Reporting Issues
 

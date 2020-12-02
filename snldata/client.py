@@ -7,7 +7,7 @@ name = "SnlData"
 api_version = 'v1'
 user_agent = "%s %s" % (name, api_version)
 
-script_version = '1.0.0'
+script_version = '1.1.0'
 
 
 class SnlSession:
@@ -17,27 +17,40 @@ class SnlSession:
             import snldata
 
             R = snldata.SnlSession()
-            R.search(query="aa-", best=True) #Pick the one with the best rank
+            R.search(query="NTNU", best=True) #Pick the one with the best rank
             print(R.json)
     """
 
     PATHS = {
-        'snl': 'https://snl.no/api/' + api_version + '/search', # Store norske leksikon
-        'nbl': 'https://nbl.snl.no/api/' + api_version + '/search', # Norsk biografisk leksikon
-        'sml': 'https://sml.snl.no/api/' + api_version + '/search', # Store medisinske leksikon
-        'nkl': 'https://nkl.snl.no/api/' + api_version + '/search', # Norsk kunstnerleksikon
+        'snl': 'https://snl.no/api/' + api_version + '/search',  # Store norske leksikon
+        'nbl': 'https://nbl.snl.no/api/' + api_version + '/search',  # Norsk biografisk leksikon
+        'sml': 'https://sml.snl.no/api/' + api_version + '/search',  # Store medisinske leksikon
+        'nkl': 'https://nkl.snl.no/api/' + api_version + '/search',  # Norsk kunstnerleksikon
         'prototyping': 'https://snl.no/.api/prototyping/search',  # UNSTABLE - SNL
-        'dsd': 'https://denstoredanske.lex.dk/api/' + api_version + '/search', # Den store danske
-        'dlh': 'https://dansklitteraturshistorie.lex.dk/api/' + api_version + '/search', # Dansk litteratur historie
-        'dbl': 'https://biografiskleksikon.lex.dk/api/' + api_version + '/search', # Dansk biografisk leksikon
-        'gtl': 'https://teaterleksikon.lex.dk/api' + api_version + '/search', # Gyldendals Teaterleksikon
-        'nm': 'https://mytologi.lex.dk/api/' + api_version + '/search', # Nordisk Mytologi
-        'do': 'https://danmarksoldtid.lex.dk/api/' + api_version + '/search', # Danmarks Oldtid
-        'sl': 'https://symbolleksikon.lex.dk/api/' + api_version + '/search', # Symbolleksikon
-        'dh': 'https://danmarkshistorien.lex.dk/api/' + api_version + '/search', # Danmarkshistorien
-        'hob': 'https://bornelitteratur.lex.dk/api/' + api_version + '/search', # Historien om børnelitteratur
-        'pd': 'https://pattedyratlas.lex.dk/api/' + api_version + '/search', # Dansk Pattedyratlas
-        'prototyping-dsd': 'https://denstoredanske.lex.dk/.api/prototyping/search',  # UNSTABLE
+        'dsd': 'https://denstoredanske.lex.dk/api/' + api_version + '/search',  # Den store danske
+        'dlh': 'https://dansklitteraturshistorie.lex.dk/api/' + api_version + '/search',  # Dansk litteratur historie
+        'dbl': 'https://biografiskleksikon.lex.dk/api/' + api_version + '/search',  # Dansk biografisk leksikon
+        'gtl': 'https://teaterleksikon.lex.dk/api' + api_version + '/search',  # Gyldendals Teaterleksikon
+        'nm': 'https://mytologi.lex.dk/api/' + api_version + '/search',  # Nordisk Mytologi
+        'do': 'https://danmarksoldtid.lex.dk/api/' + api_version + '/search',  # Danmarks Oldtid
+        'sl': 'https://symbolleksikon.lex.dk/api/' + api_version + '/search',  # Symbolleksikon
+        'dh': 'https://danmarkshistorien.lex.dk/api/' + api_version + '/search',  # Danmarkshistorien
+        'hob': 'https://bornelitteratur.lex.dk/api/' + api_version + '/search',  # Historien om børnelitteratur
+        'pd': 'https://pattedyratlas.lex.dk/api/' + api_version + '/search',  # Dansk Pattedyratlas
+        'prototyping-lex': 'https://denstoredanske.lex.dk/.api/prototyping/search',  # UNSTABLE
+    }
+
+    SHORT_TO_LONG = {
+        'dsd': 'denstoredanske',
+        'dlh': 'dansklitteraturshistorie',
+        'dbl': 'biografiskleksikon',
+        'gtl': 'teaterleksikon',
+        'nm': 'mytologi',
+        'do': 'danmarksoldtid',
+        'sl': 'symbolleksikon',
+        'dh': 'danmarkshistorien',
+        'hob': 'bornelitteratur',
+        'pd': 'pattedyratlas',
     }
 
     QUERYQUAL = {
@@ -51,10 +64,10 @@ is no further clarification",
     assertUser = None
 
     def __init__(
-        self,
-        requests_timeout=None,
-        requests_session=True,
-        user_agent=user_agent,
+            self,
+            requests_timeout=None,
+            requests_session=True,
+            user_agent=user_agent,
     ):
         """
         Creates a Store Norske Leksikon API client.
@@ -84,7 +97,7 @@ is no further clarification",
         return self
 
     def __dir__(self):
-         return self.__dict__.keys()
+        return self.__dict__.keys()
 
     def search(self, zone="snl", query="", limit=3, offset=0, best=False):
         """
@@ -102,7 +115,7 @@ is no further clarification",
         @param best: To get the first and best (by rank) result returned.
         @type best: bool
         """
-        if (limit > 0 and limit < 11 and zone in self.PATHS and
+        if (0 < limit < 11 and zone in self.PATHS and
                 offset < limit and query != ""):
 
             PARAMS = {
@@ -122,7 +135,7 @@ is no further clarification",
                 "Something went wrong with the parametres!"
             )
 
-    def searchV2(self, param: Dict[str, str], zone="snl", best = False) -> Any:
+    def searchV2(self, param: Dict[str, str], zone="snl", best=False) -> Any:
         """
         Dict param: (with "prototyping")
         @param encyclopedia: Begrens søket til angitt leksikon: snl, sml, nbl
@@ -195,10 +208,14 @@ is no further clarification",
         @param best: To get the first and best (by query_match_quality)
             result returned.
         @type best: bool
+        :param param:
         """
-        if (param['limit'] > 0 and param['limit'] < 101 and param['offset'] <
+        if (0 < param['limit'] < 101 and param['offset'] <
                 param['limit'] and param['query'] != "" and
-                zone in self.PATHS):
+                zone in self.PATHS and param['encyclopedia'] in self.PATHS):
+
+            if param['encyclopedia'] in self.SHORT_TO_LONG: param['encyclopedia'] = self.SHORT_TO_LONG[
+                param['encyclopedia']]
 
             self._get(param, zone)
 
@@ -220,8 +237,11 @@ is no further clarification",
         @type zone: str
         """
         if isinstance(data, int) and isinstance(self.json, list):
-            R = self._S.get(
-                self.json[data]["article_url_json"], headers=self.headers)
+            try:
+                R = self._S.get(
+                    self.json[data]["article_url_json"], headers=self.headers)
+            except:
+                return 0  # zero results
         elif not isinstance(data, int):
             R = self._S.get(
                 self.PATHS[zone.lower()], params=data, headers=self.headers)
@@ -252,7 +272,7 @@ is no further clarification",
             if zone == 'prototyping':
                 self.json[i].update(
                     {'query_quality_explain':
-                        self.QUERYQUAL[result['query_match_quality']]})
+                         self.QUERYQUAL[result['query_match_quality']]})
             else:
                 sentence = re.search(
                     r'^(.*?(?<!\b\w)[.?!])\s+[A-Z0-9]',

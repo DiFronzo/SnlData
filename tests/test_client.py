@@ -20,15 +20,50 @@ class TestSnlData(unittest.TestCase):
         self.test = self.G.get("https://snl.no/api/v1/search?query=")
         self.assertEqual(self.test.status_code, 200)
 
+    def test_simplereq_dsd(self):
+        self.G = requests.Session()
+        self.test = self.G.get("https://denstoredanske.lex.dk//api/v1/search?query=")
+        self.assertEqual(self.test.status_code, 200)
+
     def test_query(self):
-        self.service.search(query="aa-", best=True)
-        self.assertEqual(self.service.title, "aa-")
+        self.service.search(query="TCP", best=True)
+        self.assertEqual(self.service.title, "TCP")
+
+    def test_query_dsd(self):
+        self.service.search(zone='dsd', query="februar", best=True)
+        self.assertEqual(self.service.title, "februar")
+
+    def test_query_zero_result(self):
+        self.service.search(query="asdasdadadsasdasdasd", best=True)
+        self.assertEqual(self.service.json, [])
+
+    def test_query_zero_result_dsd(self):
+        self.service.search(zone='dsd', query="asdasdadadsasdasdasd", best=True)
+        self.assertEqual(self.service.json, [])
 
     def test_query2(self):
         self.service.searchV2(
-            {"encyclopedia": "snl", "query": "aa-", "limit": 3, "offset": 0},
+            {"encyclopedia": "snl", "query": "TCP", "limit": 3, "offset": 0},
             zone="prototyping", best=True)
-        self.assertEqual(self.service.title, "aa-")
+        self.assertEqual(self.service.title, "TCP")
+
+    def test_query2_dsd(self):
+        self.service.searchV2(
+            {"encyclopedia": "dsd", "query": "februar", "limit": 3, "offset": 0},
+            zone="prototyping", best=True)
+        self.assertEqual(self.service.title, "februar")
+
+    def test_query_sml(self):
+        self.service.searchV2(
+            {"encyclopedia": "sml", "query": "CRISPR", "limit": 3, "offset": 0},
+            zone="prototyping", best=True)
+        self.assertEqual(self.service.title, "CRISPR")
+
+    def test_query_pd(self):
+        self.service.searchV2(
+            {"encyclopedia": "pd", "query": "Lækat", "limit": 3, "offset": 0},
+            zone="prototyping-lex", best=True)
+        self.assertEqual(self.service.title, "Lækat")
 
     def test_search(self):
         self.service.search(query="NTNU")
@@ -38,6 +73,10 @@ class TestSnlData(unittest.TestCase):
     def test_search_fail(self):
         with self.assertRaises(Exception) as context:
             self.service.search(query="NTNU", limit=0)
+
+    def test_search_fail_dsd(self):
+        with self.assertRaises(Exception) as context:
+            self.service.search(zone='dsd', query="NTNU", limit=0)
 
         self.assertTrue(
             "Something went wrong with the parametres!" in
