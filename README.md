@@ -10,7 +10,7 @@
   <a href="https://github.com/DiFronzo/SnlData/blob/master/LICENSE"><img alt="License: MIT" src="https://snldata.readthedocs.io/en/latest/_static/license.svg"></a>
   <a href="https://pepy.tech/project/snldata"><img alt="Downloads" src="https://pepy.tech/badge/snldata"></a>
   <a href="https://pypi.org/project/snldata/"><img alt="PyPI" src="https://img.shields.io/pypi/v/snldata"></a>
-  <h4>A lightweight Python library for Store norske leksikon and Den store danske APIs</h4>
+  <h4>A lightweight Python library for Store Norske Leksikon and Lex.dk APIs</h4>
 </p>
 
 ## Installation
