@@ -147,7 +147,7 @@ R = snldata.SnlSession()
 R.searchV2({"encyclopedia": "snl", "query": "dr. dre", "limit": 3, "offset": 0 }, zone="prototyping")
 i = 0
 for val in R.json:
-    print('{}. {}: {}').format(i, val['headword'], val["query_quality_explain"])
+    print('{}. {}: {}'.format(i, val['headword'], val["query_quality_explain"]))
     i += 1
 ```
 Outputs:
@@ -161,7 +161,7 @@ Outputs:
 Pick the article you want from the example above:
 ```python
 R._get(1)
-print("Title: {}, Created: {}").format(R.title, R.created_at)
+print("Title: {}, Created: {}".format(R.title, R.created_at))
 ```
 Outputs: `Title: hiphop, Created: 2009-02-14T05:15:20.546+01:00`
 ### No result
@@ -179,6 +179,7 @@ Outputs: `[]`
 
 ## To-do
 - [ ] Fully support taxonomy
+- [ ] Support for ".recent-activities" to JSON.
 - [X] When zero results, return somthing to tell the user there is no result.
 
 ## Reporting Issues
