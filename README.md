@@ -15,7 +15,7 @@
 
 ## Installation
 
-    pip install snldata
+    pip3 install snldata
 
 ## Quick Start
 Raw JSON
