@@ -51,8 +51,8 @@ Outputs: the JSON object
 ## Licenses for content from Store Norske Leksikon and Lex.dk 
 | Licence | Description | Read more
 | --- | --- | --- |
-| `fri` | [Creative Commons](https://creativecommons.org/) **[CC-BY-SA-3.0](https://creativecommons.org/licenses/by-sa/3.0/)** license. Everyone is allowed to **share, use, copy and adapt** the text as long as **the author and Store norske leksikon** continues to be credited and the article retains the same free license for further use. | [Meta](https://meta.snl.no/fri_gjenbruk)
-| `begrenset gjenbruk/begrænset genbrug` | You **can't reuse, republish, or adapt** the article without first obtaining the author's permission.| [Meta](https://meta.snl.no/begrenset_gjenbruk)
+| `fri` | [Creative Commons](https://creativecommons.org/) **[CC-BY-SA-3.0](https://creativecommons.org/licenses/by-sa/3.0/)** license. Everyone is allowed to **share, use, copy and adapt** the text as long as **the author and Store norske leksikon** continues to be credited and the article retains the same free license for further use. | [SNL](https://meta.snl.no/fri_gjenbruk) [LEX](https://denstoredanske.lex.dk/.licenses/free)
+| `begrenset gjenbruk/begrænset genbrug` | You **can't reuse, republish, or adapt** the article without first obtaining the author's permission.| [SNL](https://meta.snl.no/begrenset_gjenbruk) [LEX](https://denstoredanske.lex.dk/.licenses/restricted)
 
 ## Overview of sites/zones
 ### SNL
@@ -81,7 +81,7 @@ Outputs: the JSON object
 
 ## Query
 ### Easy Query
-- Main documentation: [API-dokumentasjon](https://meta.snl.no/API-dokumentasjon)
+- Main documentation (SNL): [API-dokumentasjon](https://meta.snl.no/API-dokumentasjon)
 
 ```python
 import snldata
@@ -127,7 +127,7 @@ print(R.url)
 Outputs: `https://denstoredanske.lex.dk/Python`
 
 ### Advance Query (best for prototyping api)
-- Main documentation: [API-dokumentasjon - prototyping](https://meta.snl.no/API-dokumentasjon_-_prototyping)
+- Main documentation (SNL): [API-dokumentasjon - prototyping](https://meta.snl.no/API-dokumentasjon_-_prototyping)
 
 ```python
 import snldata
@@ -182,5 +182,4 @@ Outputs: `[]`
 - [X] When zero results, return somthing to tell the user there is no result.
 
 ## Reporting Issues
-
 If you have suggestions, bugs or other issues specific to this library, file them [here](https://github.com/DiFronzo/SnlData/issues). Or just send me a pull request.
