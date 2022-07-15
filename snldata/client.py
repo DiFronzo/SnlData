@@ -7,7 +7,7 @@ name = "SnlData"
 api_version = 'v1'
 user_agent = "%s %s" % (name, api_version)
 
-script_version = '1.1.0'
+script_version = '1.1.1'
 
 
 class SnlSession:
@@ -37,6 +37,8 @@ class SnlSession:
         'dh': 'https://danmarkshistorien.lex.dk/api/' + api_version + '/search',  # Danmarkshistorien
         'hob': 'https://bornelitteratur.lex.dk/api/' + api_version + '/search',  # Historien om børnelitteratur
         'pd': 'https://pattedyratlas.lex.dk/api/' + api_version + '/search',  # Dansk Pattedyratlas
+        'nid': 'https://naturenidanmark.lex.dk/api/' + api_version + '/search',  # Naturen i Danmark
+        'trap': 'https://trap.lex.dk/api/' + api_version + '/search',  # Trap Danmark
         'prototyping-lex': 'https://denstoredanske.lex.dk/.api/prototyping/search',  # UNSTABLE
     }
 
@@ -51,6 +53,8 @@ class SnlSession:
         'dh': 'danmarkshistorien',
         'hob': 'bornelitteratur',
         'pd': 'pattedyratlas',
+        'nid': 'naturenidanmark',
+        'trap': 'trap'
     }
 
     QUERYQUAL = {
