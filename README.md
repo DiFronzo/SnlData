@@ -77,6 +77,8 @@ Outputs: the JSON object
 |     `dh`     | https://danmarkshistorien.lex.dk/ |
 |     `hob`     | https://bornelitteratur.lex.dk/ |
 |     `pd`     | https://pattedyratlas.lex.dk/ |
+|     `nid`     | https://naturenidanmark.lex.dk/ |
+|     `trap`     | https://trap.lex.dk/ |
 | `prototyping-lex` |          -          | Unstable - for LEX pages
 
 ## Query
