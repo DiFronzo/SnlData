@@ -9,7 +9,7 @@
   <a href="https://github.com/DiFronzo/SnlData/blob/master/LICENSE"><img alt="License: GPLv3" src="https://img.shields.io/badge/License-GPLv3-blue.svg"></a>
   <a href="https://pepy.tech/project/snldata"><img alt="Downloads" src="https://pepy.tech/badge/snldata"></a>
   <a href="https://pypi.org/project/snldata/"><img alt="PyPI" src="https://img.shields.io/pypi/v/snldata"></a>
-  <h4>A lightweight Python library for Store Norske Leksikon and Lex.dk APIs</h4>
+  <h4>A lightweight Python library for Store Norske Leksikon and Lex.dk/Den Store Danske APIs</h4>
 </p>
 
 ## Installation
@@ -62,7 +62,7 @@ Outputs: the JSON object
 |     `nbl`     | https://nbl.snl.no/ |        
 |     `sml`     | https://sml.snl.no/ |        
 |     `nkl`     | https://nkl.snl.no/ |        
-| `prototyping` |          -          | Unstable - for SNL
+| <s>`prototyping`</s> |          -          | <s>Unstable - for SNL</s>
 
 ### LEX
 |     code    |       Website       |   Note 
@@ -79,7 +79,7 @@ Outputs: the JSON object
 |     `pd`     | https://pattedyratlas.lex.dk/ |
 |     `nid`     | https://naturenidanmark.lex.dk/ |
 |     `trap`     | https://trap.lex.dk/ |
-| `prototyping-lex` |          -          | Unstable - for LEX pages
+| <s>`prototyping-lex`</s> |          -          | <s>Unstable - for LEX pages</s>
 
 ## Query
 ### Easy Query
@@ -131,40 +131,8 @@ Outputs: `https://denstoredanske.lex.dk/Python`
 ### Advance Query (best for prototyping api)
 - Main documentation (SNL): [API-dokumentasjon - prototyping](https://meta.snl.no/API-dokumentasjon_-_prototyping)
 
-```python
-import snldata
+**The prototyping API endpoint has been removed as of May 2023.**
 
-R = snldata.SnlSession()
-R.searchV2({"encyclopedia": "snl", "query": "dr. dre", "limit": 3, "offset": 0 }, zone="prototyping", best=True)
-print(R.title)
-
-```
-Outputs: `Dr. Dre`
-
-```python
-import snldata
-
-R = snldata.SnlSession()
-R.searchV2({"encyclopedia": "snl", "query": "dr. dre", "limit": 3, "offset": 0 }, zone="prototyping")
-i = 0
-for val in R.json:
-    print('{}. {}: {}'.format(i, val['headword'], val["query_quality_explain"]))
-    i += 1
-```
-Outputs:
-```
-0. Dr. Dre: The search string is equal to the article's headword and there is no further clarification
-1. hiphop: Match on article text or part of title
-2. Eminem: Match on article text or part of title
-###Explaining of the values: (the prototyping api allows you to send a lot of parametres)
-<index of the json file> <title>: <rank as text>
-```
-Pick the article you want from the example above:
-```python
-R._get(1)
-print("Title: {}, Created: {}".format(R.title, R.created_at))
-```
-Outputs: `Title: hiphop, Created: 2009-02-14T05:15:20.546+01:00`
 ### No result
 If the API returns no results, `.json` will be given a empty list.
 ```python
@@ -174,14 +142,24 @@ R = snldata.SnlSession()
 R.search(zone='dsd', query="asdadasdasdad", best=True)  #Pick the one with the best rank
 print(R.json)
 ```
-Outputs: `[]`
+Outputs: `{}`
+
+```python
+import snldata
+
+R = snldata.SnlSession()
+R.search(zone='dsd', query="jdfhdskjfhsjkdfhksdfh") #Pick the three best results, but there are none
+R._get(0)
+print(R.json)
+```
+Outputs: `{}`
 
 <sup>All of the examples uses text that is [CC-BY-SA-3.0](https://creativecommons.org/licenses/by-sa/3.0). By at least one of the following authors: Henrik Dvergsdal, Jon Vidar Bergan, and Audun Kjus Aahlin. Read more about the license: [fri gjenbruk](https://meta.snl.no/fri_gjenbruk).</sup>
 
 ## To-do
 - [ ] Fully support taxonomy
 - [ ] Support for ".recent-activities" to JSON.
-- [X] When zero results, return somthing to tell the user there is no result.
+- [X] When zero results, return empty dict to tell the user there is no result.
 
 ## Reporting Issues
 If you have suggestions, bugs or other issues specific to this library, file them [here](https://github.com/DiFronzo/SnlData/issues). Or just send me a pull request.
