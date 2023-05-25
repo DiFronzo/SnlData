@@ -2,7 +2,8 @@
   <a href="https://github.com/DiFronzo/snldata"><img alt="Logo" width="500" height="300" src="https://snldata.readthedocs.io/en/latest/_static/snldata_logo.svg"></a>
 </p>
 <p align="center">
-  <a href="https://github.com/DiFronzo/snldata/actions"><img alt="Actions Status" src="https://github.com/DiFronzo/SnlData/workflows/Test/badge.svg"></a>
+  <a href="https://github.com/DiFronzo/snldata/releases" target="_blank"><img src="https://img.shields.io/badge/SnlData-1.1.2-blue" alt="SnlData version" /></a>
+  <a href="https://github.com/DiFronzo/snldata/actions"><img alt="Actions Status" src="https://github.com/DiFronzo/SnlData/actions/workflows/test.yml/badge.svg"></a>
   <a href="https://snldata.readthedocs.io/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/snldata/badge/?version=latest"></a>
   <a href="https://codecov.io/gh/DiFronzo/SnlData"><img alt="Coverage Status" src="https://codecov.io/gh/DiFronzo/SnlData/branch/master/graph/badge.svg"></a>
   <a href="https://travis-ci.com/DiFronzo/SnlData"><img alt="Build Status" src="https://api.travis-ci.com/DiFronzo/SnlData.svg?branch=master"></a>	
