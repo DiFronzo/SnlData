@@ -14,6 +14,12 @@ class TestSnlData(unittest.TestCase):
     def tearDown(self):
         self.service.close()
 
+    def test_not_implemented_error(self):
+        with self.assertRaises(Exception) as context:
+            self.G = requests.Session(requests_session=False)
+        
+        self.assertTrue(NotImplementedError())
+
     def test_simplereq(self):
         self.G = requests.Session()
         self.test = self.G.get("https://snl.no/api/v1/search?query=")
