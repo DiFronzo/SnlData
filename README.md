@@ -6,7 +6,7 @@
   <a href="https://github.com/DiFronzo/snldata/actions"><img alt="Actions Status" src="https://github.com/DiFronzo/SnlData/actions/workflows/test.yml/badge.svg"></a>
   <a href="https://snldata.readthedocs.io/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/snldata/badge/?version=latest"></a>
   <a href="https://codecov.io/gh/DiFronzo/SnlData"><img alt="Coverage Status" src="https://codecov.io/gh/DiFronzo/SnlData/branch/master/graph/badge.svg"></a>
-  <a href="https://travis-ci.com/DiFronzo/SnlData"><img alt="Build Status" src="https://api.travis-ci.com/DiFronzo/SnlData.svg?branch=master"></a>	
+  <a href="https://app.travis-ci.com/DiFronzo/SnlData"><img alt="Build Status" src="https://api.travis-ci.com/DiFronzo/SnlData.svg?branch=master"></a>	
   <a href="https://github.com/DiFronzo/SnlData/blob/master/LICENSE"><img alt="License: GPLv3" src="https://img.shields.io/badge/License-GPLv3-blue.svg"></a>
   <a href="https://pepy.tech/project/snldata"><img alt="Downloads" src="https://pepy.tech/badge/snldata"></a>
   <a href="https://pypi.org/project/snldata/"><img alt="PyPI" src="https://img.shields.io/pypi/v/snldata"></a>
