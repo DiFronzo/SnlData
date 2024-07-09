@@ -15,9 +15,8 @@ class TestSnlData(unittest.TestCase):
         self.service.close()
 
     def test_not_implemented_error(self):
-        with self.assertRaises(Exception) as context:
+        with self.assertRaises(Exception):
             self.G = requests.Session(requests_session=False)
-        
         self.assertTrue(NotImplementedError())
 
     def test_simplereq(self):
@@ -37,6 +36,10 @@ class TestSnlData(unittest.TestCase):
     def test_query_dsd(self):
         self.service.search(zone='dsd', query="februar", best=True)
         self.assertEqual(self.service.title, "februar")
+
+    def test_query_lille(self):
+        self.service.search(zone='lille', query="norge", best=True)
+        self.assertEqual(self.service.title, "Norge")
 
     def test_query_zero_result(self):
         self.service.search(query="asdasdadadsasdasdasd", best=True)
@@ -92,17 +95,13 @@ class TestSnlData(unittest.TestCase):
         with self.assertRaises(Exception) as context:
             self.service.search(query="NTNU", limit=0)
 
-            self.assertTrue(
-            "Something went wrong with the parameters!" in
-            str(context.exception))
+            self.assertTrue("Something went wrong with the parameters!" in str(context.exception))
 
     def test_search_fail_dsd(self):
         with self.assertRaises(Exception) as context:
             self.service.search(zone='dsd2', query="NTNU", limit=11)
 
-        self.assertTrue(
-            "Something went wrong with the parameters!" in
-            str(context.exception))
+        self.assertTrue("Something went wrong with the parameters!" in str(context.exception))
 
     # API endpoint removed
     # def test_search2(self):
@@ -135,6 +134,7 @@ class TestSnlData(unittest.TestCase):
         self.service.search(query="Dr. Dre", best=True)
         self.service.search(query="Ole Ivars", best=True)
         self.assertRaises(AttributeError, lambda: self.service.gender)
+
 
 if __name__ == '__main__':
     unittest.main()

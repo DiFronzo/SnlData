@@ -36,7 +36,7 @@ else:
 
 setuptools.setup(
     name="SnlData",
-    version="1.1.2",
+    version="1.1.3",
     description="A lightweight Python library for Store Norske Leksikon and Lex.dk/Den Store Danske APIs.",
     long_description=get_long_description(),
     long_description_content_type="text/markdown",
@@ -48,10 +48,11 @@ setuptools.setup(
     packages=["snldata"],
     py_modules=["snldata"],
     ext_modules=ext_modules,
-    python_requires=">=3.6",
+    python_requires=">=3.8",
     zip_safe=False,
     install_requires=[
-        "requests>=2.22.0",
+        "requests>=2.32.3",
+        "urllib3==1.26.12"
     ],
     test_suite="tests.test_snldata",
     classifiers=[
@@ -65,7 +66,9 @@ setuptools.setup(
         "Programming Language :: Python",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
-        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
 )

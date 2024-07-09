@@ -6,7 +6,7 @@ name = "SnlData"
 api_version = 'v1'
 user_agent = "%s %s" % (name, api_version)
 
-script_version = '1.1.2'
+script_version = '1.1.3'
 
 
 class SnlSession:
@@ -38,6 +38,7 @@ class SnlSession:
         'pd': 'https://pattedyratlas.lex.dk/api/' + api_version + '/search',  # Dansk Pattedyratlas
         'nid': 'https://naturenidanmark.lex.dk/api/' + api_version + '/search',  # Naturen i Danmark
         'trap': 'https://trap.lex.dk/api/' + api_version + '/search',  # Trap Danmark
+        'lille': 'https://lille.snl.no/api/' + api_version + '/search',  # Lille norske leksikon
         # 'prototyping-lex': 'https://denstoredanske.lex.dk/.api/prototyping/search',  # UNSTABLE - Broken
     }
 
@@ -53,7 +54,8 @@ class SnlSession:
         'hob': 'bornelitteratur',
         'pd': 'pattedyratlas',
         'nid': 'naturenidanmark',
-        'trap': 'trap'
+        'trap': 'trap',
+        'lille': 'lille'
     }
 
     QUERYQUAL = {
@@ -285,13 +287,13 @@ is no further clarification",
                     {'query_quality_explain': self.QUERYQUAL[result['query_match_quality']]})
             else:
                 sentence = re.search(
-                    r'^(.*?(?<!\b\w)[.?!])\s+[A-Z0-9]', result["first_two_sentences"], flags=0)
+                    r'^(.*?(?<!\b\w)[.?!])\s+[A-Z0-9]', result["first_sentences"], flags=0)
                 if isinstance(sentence, type(None)):
                     # Regex did not work
                     self.json[i].update(
                         {'simple': '{}. {} (rank {}): {}'.format(
                             i, result["headword"], round(result["rank"], 1),
-                            result["first_two_sentences"])})
+                            result["first_sentences"])})
                 else:
                     # Regex worked
                     self.json[i].update({
