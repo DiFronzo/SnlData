@@ -69,7 +69,7 @@ Outputs: the JSON object
 ### LEX
 |     code    |       Website       |   Note 
 | --- | --- | --- |
-|     `dsd`     |   https://denstoredanske.lex.dk/   | 
+|     `lex`     |   https://lex.dk/   | is Den Store Danske/Danmarks Nationalleksikon
 |     `dlh`     | https://dansklitteraturshistorie.lex.dk/ |        
 |     `dbl`     | https://biografiskleksikon.lex.dk/ |        
 |     `gtl`     | https://teaterleksikon.lex.dk/ |
@@ -125,7 +125,7 @@ Outputs: `Spellemannprisen`
 import snldata
 
 R = snldata.SnlSession()
-R.search(zone='dsd', query="Python", best=True)  #Pick the one with the best rank
+R.search(zone='lex', query="Python", best=True)  #Pick the one with the best rank
 print(R.url)
 ```
 Outputs: `https://denstoredanske.lex.dk/Python`
@@ -141,7 +141,7 @@ If the API returns no results, `.json` will be given a empty list.
 import snldata
 
 R = snldata.SnlSession()
-R.search(zone='dsd', query="asdadasdasdad", best=True)  #Pick the one with the best rank
+R.search(zone='lex', query="asdadasdasdad", best=True)  #Pick the one with the best rank
 print(R.json)
 ```
 Outputs: `{}`
@@ -150,7 +150,7 @@ Outputs: `{}`
 import snldata
 
 R = snldata.SnlSession()
-R.search(zone='dsd', query="jdfhdskjfhsjkdfhksdfh") #Pick the three best results, but there are none
+R.search(zone='lex', query="jdfhdskjfhsjkdfhksdfh") #Pick the three best results, but there are none
 R._get(0)
 print(R.json)
 ```
