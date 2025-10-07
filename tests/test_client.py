@@ -24,17 +24,17 @@ class TestSnlData(unittest.TestCase):
         self.test = self.G.get("https://snl.no/api/v1/search?query=")
         self.assertEqual(self.test.status_code, 200)
 
-    def test_simplereq_dsd(self):
+    def test_simplereq_lex(self):
         self.G = requests.Session()
-        self.test = self.G.get("https://denstoredanske.lex.dk/api/v1/search?query=")
+        self.test = self.G.get("https://lex.dk/api/v1/search?query=")
         self.assertEqual(self.test.status_code, 200)
 
     def test_query(self):
         self.service.search(query="TCP", best=True)
         self.assertEqual(self.service.title, "TCP")
 
-    def test_query_dsd(self):
-        self.service.search(zone='dsd', query="februar", best=True)
+    def test_query_lex(self):
+        self.service.search(zone='lex', query="februar", best=True)
         self.assertEqual(self.service.title, "februar")
 
     def test_query_lille(self):
@@ -45,8 +45,8 @@ class TestSnlData(unittest.TestCase):
         self.service.search(query="asdasdadadsasdasdasd", best=True)
         self.assertEqual(self.service.json, {})
 
-    def test_query_zero_result_dsd(self):
-        self.service.search(zone='dsd', query="asdasdadadsasdasdasd", best=True)
+    def test_query_zero_result_lex(self):
+        self.service.search(zone='lex', query="asdasdadadsasdasdasd", best=True)
         self.assertEqual(self.service.json, {})
 
     # API endpoint removed
@@ -57,9 +57,9 @@ class TestSnlData(unittest.TestCase):
     #     self.assertEqual(self.service.title, "TCP")
 
     # API endpoint removed
-    # def test_query2_dsd(self):
+    # def test_query2_lex(self):
     #     self.service.searchV2(
-    #         {"encyclopedia": "dsd", "query": "februar", "limit": 3, "offset": 0},
+    #         {"encyclopedia": "lex", "query": "februar", "limit": 3, "offset": 0},
     #         zone="prototyping", best=True)
     #     self.assertEqual(self.service.title, "februar")
 
@@ -97,9 +97,9 @@ class TestSnlData(unittest.TestCase):
 
             self.assertTrue("Something went wrong with the parameters!" in str(context.exception))
 
-    def test_search_fail_dsd(self):
+    def test_search_fail_lex(self):
         with self.assertRaises(Exception) as context:
-            self.service.search(zone='dsd2', query="NTNU", limit=11)
+            self.service.search(zone='lex2', query="NTNU", limit=11)
 
         self.assertTrue("Something went wrong with the parameters!" in str(context.exception))
 

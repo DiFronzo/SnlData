@@ -27,6 +27,7 @@ class SnlSession:
         'nkl': 'https://nkl.snl.no/api/' + api_version + '/search',  # Norsk kunstnerleksikon
         # 'prototyping': 'https://snl.no/.api/prototyping/search',  # UNSTABLE SNL - Broken
         'dsd': 'https://denstoredanske.lex.dk/api/' + api_version + '/search',  # Den store danske
+        'lex': 'https://lex.dk/api/' + api_version + '/search',  # Den store danske/Lex
         'dlh': 'https://dansklitteraturshistorie.lex.dk/api/' + api_version + '/search',  # Dansk litteratur historie
         'dbl': 'https://biografiskleksikon.lex.dk/api/' + api_version + '/search',  # Dansk biografisk leksikon
         'gtl': 'https://teaterleksikon.lex.dk/api' + api_version + '/search',  # Gyldendals Teaterleksikon
@@ -44,6 +45,7 @@ class SnlSession:
 
     SHORT_TO_LONG = {
         'dsd': 'denstoredanske',
+        'lex': 'lex',
         'dlh': 'dansklitteraturshistorie',
         'dbl': 'biografiskleksikon',
         'gtl': 'teaterleksikon',
