@@ -52,7 +52,7 @@ setuptools.setup(
     zip_safe=False,
     install_requires=[
         "requests>=2.32.3",
-        "urllib3==1.26.12"
+        "urllib3==1.26.19"
     ],
     test_suite="tests.test_snldata",
     classifiers=[
