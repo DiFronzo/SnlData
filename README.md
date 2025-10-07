@@ -128,7 +128,7 @@ R = snldata.SnlSession()
 R.search(zone='lex', query="Python", best=True)  #Pick the one with the best rank
 print(R.url)
 ```
-Outputs: `https://denstoredanske.lex.dk/Python`
+Outputs: `https://lex.dk/Python`
 
 ### Advance Query (best for prototyping api)
 - Main documentation (SNL): [API-dokumentasjon - prototyping](https://meta.snl.no/API-dokumentasjon_-_prototyping)
